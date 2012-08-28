@@ -48,10 +48,8 @@ PRODUCT_PACKAGES += \
     audio_policy.msm8660 \
     audio.primary.msm8660 \
     libaudioutils
-PRODUCT_COPY_FILES += \
-    device/htc/msm8660-common/configs/audio_policy.conf:system/etc/audio_policy.conf
 
-# Omx
+# OMX
 PRODUCT_PACKAGES += \
     libdivxdrmdecrypt \
     libmm-omxcore \
@@ -71,41 +69,24 @@ PRODUCT_PACKAGES += \
     com.android.future.usb.accessory \
     Torch
 
-# Live Wallpapers
-PRODUCT_PACKAGES += \
-    LiveWallpapers \
-    LiveWallpapersPicker \
-    VisualizationWallpapers \
-    librs_jni
-
 # Filesystem management tools
 PRODUCT_PACKAGES += \
     make_ext4fs \
     setup_fs
 
-# for bugmailer
-ifneq ($(TARGET_BUILD_VARIANT),user)
-    PRODUCT_PACKAGES += send_bug
-    PRODUCT_COPY_FILES += \
-        system/extras/bugmailer/bugmailer.sh:system/bin/bugmailer.sh \
-        system/extras/bugmailer/send_bug:system/bin/send_bug
-endif
-
 # 8660 Common Firmware
 PRODUCT_COPY_FILES += \
+    device/htc/msm8660-common/firmware/a225p5_pm4.fw:system/etc/firmware/a225p5_pm4.fw \
+    device/htc/msm8660-common/firmware/a225_pfp.fw:system/etc/firmware/a225_pfp.fw \
+    device/htc/msm8660-common/firmware/a225_pm4.fw:system/etc/firmware/a225_pm4.fw \
+    device/htc/msm8660-common/firmware/vidc_1080p.fw:system/etc/firmware/vidc_1080p.fw \
     device/htc/msm8660-common/firmware/leia_pfp_470.fw:system/etc/firmware/leia_pfp_470.fw \
     device/htc/msm8660-common/firmware/leia_pm4_470.fw:system/etc/firmware/leia_pm4_470.fw
-#    device/htc/msm8660-common/firmware/vidc_1080p.fw:system/etc/firmware/vidc_1080p.fw
 
 # Common Qualcomm scripts
 PRODUCT_COPY_FILES += \
     device/htc/msm8660-common/prebuilt/init.qcom.post_boot.sh:system/etc/init.qcom.post_boot.sh \
     device/htc/msm8660-common/prebuilt/init.qcom.efs.sync.sh:system/etc/init.qcom.efs.sync.sh
-
-# We have enough storage space to hold precise GC data
-PRODUCT_TAGS += dalvik.gc.type-precise
-
-PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 
 # Device uses high-density artwork where available
 PRODUCT_AAPT_CONFIG := normal hdpi
