@@ -43,8 +43,7 @@ PRODUCT_PACKAGES += \
     audio_policy.msm8660 \
     audio.primary.msm8660 \
     libaudioutils \
-    audio.usb.default \
-    audio_policy.conf
+    audio.usb.default 
 
 # Omx
 PRODUCT_PACKAGES += \
@@ -88,7 +87,8 @@ PRODUCT_PACKAGES += \
 # Media configuration
 PRODUCT_COPY_FILES += \
     device/htc/msm8660-common/configs/media_codecs.xml:system/etc/media_codecs.xml \
-    device/htc/msm8660-common/configs/media_profiles.xml:system/etc/media_profiles.xml
+    device/htc/msm8660-common/configs/media_profiles.xml:system/etc/media_profiles.xml \
+    device/htc/msm8660-common/configs/audio_policy.conf:system/etc/audio_policy.conf 
 
 # 8660 Common Firmware
 PRODUCT_COPY_FILES += \

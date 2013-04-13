@@ -61,7 +61,7 @@ WIFI_DRIVER_FW_PATH_PARAM        := "/sys/module/bcmdhd/parameters/firmware_path
 BOARD_LEGACY_NL80211_STA_EVENTS := true
 
 # Audio
-TARGET_QCOM_AUDIO_VARIANT := caf
+TARGET_QCOM_AUDIO_VARIANT := legacy
 COMMON_GLOBAL_CFLAGS += -DHTC_ACOUSTIC_AUDIO -DLEGACY_QCOM_VOICE
 
 # Bluetooth
@@ -93,7 +93,7 @@ TARGET_USES_PMEM := true
 BOARD_EGL_CFG := device/htc/msm8660-common/configs/egl.cfg
 
 # Lights
-TARGET_PROVIDES_LIBLIGHTS := true
+TARGET_PROVIDES_LIBLIGHT := true
 
 # Filesystem
 BOARD_VOLD_MAX_PARTITIONS := 36
