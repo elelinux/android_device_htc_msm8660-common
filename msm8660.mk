@@ -14,7 +14,6 @@
 
 # Qualcomm scripts
 PRODUCT_COPY_FILES += \
-    device/htc/msm8660-common/prebuilt/89Sweep2Wake:system/etc/init.d/89Sweep2Wake \
     device/htc/msm8660-common/prebuilt/init.qcom.post_boot.sh:system/etc/init.qcom.post_boot.sh \
     device/htc/msm8660-common/prebuilt/init.qcom.efs.sync.sh:system/etc/init.qcom.efs.sync.sh
 
