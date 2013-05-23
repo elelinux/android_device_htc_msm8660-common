@@ -64,7 +64,7 @@ WIFI_DRIVER_FW_PATH_PARAM        := "/sys/module/bcmdhd/parameters/firmware_path
 BOARD_LEGACY_NL80211_STA_EVENTS := true
 
 # Audio
-TARGET_QCOM_AUDIO_VARIANT := legacy
+TARGET_QCOM_AUDIO_VARIANT := caf
 COMMON_GLOBAL_CFLAGS += -DHTC_ACOUSTIC_AUDIO -DLEGACY_QCOM_VOICE
 
 # Bluetooth
