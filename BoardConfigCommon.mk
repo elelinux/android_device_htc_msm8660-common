@@ -12,105 +12,133 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+BOARD_VENDOR := htc
+
 TARGET_SPECIFIC_HEADER_PATH := device/htc/msm8660-common/include
 
 # Bootloader
 TARGET_NO_BOOTLOADER := true
 
+# Kernel
+TARGET_KERNEL_SOURCE := /home/sultan/sultan-kernel-pyramid
+
 # Platform
 TARGET_BOARD_PLATFORM := msm8660
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno200
 
-# Vendor
-BOARD_VENDOR := htc
-
 # Architecture
-TARGET_CPU_VARIANT := cortex-a8
+TARGET_CPU_VARIANT := scorpion
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_ARCH := arm
-TARGET_USES_ION := true
 TARGET_ARCH_VARIANT := armv7-a-neon
+TARGET_ARCH_LOWMEM := true
 TARGET_CPU_SMP := true
-ARCH_ARM_HAVE_TLS_REGISTER := true
-TARGET_HARDWARE_3D := true
-BOARD_USES_GENLOCK := true
-TARGET_USE_SCORPION_BIONIC_OPTIMIZATION := true
-ARCH_ARM_HAVE_VFP := true
-ARCH_ARM_HAVE_NEON := true
-TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
+TARGET_ENABLE_AV_ENHANCEMENTS := true
+TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK := true
 
 # Flags
 COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE
 
 # QCOM hardware
-BOARD_USES_LEGACY_QCOM := true
 BOARD_USES_QCOM_HARDWARE := true
-
-# FB legacy
-BOARD_EGL_NEEDS_LEGACY_FB := true
-
-# Scorpion optimizations
-TARGET_SCORPION_BIONIC_PLDOFFS := 6
-TARGET_SCORPION_BIONIC_PLDSIZE := 128
-TARGET_USE_SCORPION_BIONIC_OPTIMIZATION := true
-TARGET_USE_SCORPION_PLD_SET := true
-
-# Wifi related defines
-BOARD_HOSTAPD_DRIVER             := NL80211
-BOARD_HOSTAPD_PRIVATE_LIB        := lib_driver_cmd_bcmdhd
-BOARD_LEGACY_NL80211_STA_EVENTS  := true
-BOARD_WLAN_DEVICE                := bcmdhd
-BOARD_WPA_SUPPLICANT_DRIVER      := NL80211
-BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_bcmdhd
-WIFI_BAND                        := 802_11_ABG
-WIFI_DRIVER_FW_PATH_AP           := "/vendor/firmware/fw_bcmdhd_apsta.bin"
-WIFI_DRIVER_FW_PATH_P2P          := "/vendor/firmware/fw_bcmdhd_p2p.bin"
-WIFI_DRIVER_FW_PATH_PARAM        := "/sys/module/bcmdhd/parameters/firmware_path"
-WIFI_DRIVER_FW_PATH_STA          := "/vendor/firmware/fw_bcmdhd.bin"
-WPA_SUPPLICANT_VERSION           := VER_0_8_X
+TARGET_QCOM_DISPLAY_VARIANT := legacy
+TARGET_QCOM_MEDIA_VARIANT := legacy
+TARGET_USE_QCOM_BIONIC_OPTIMIZATION := true
 
 # Audio
-BOARD_USES_LEGACY_ALSA_AUDIO := true
 COMMON_GLOBAL_CFLAGS += -DHTC_ACOUSTIC_AUDIO -DLEGACY_QCOM_VOICE
+BOARD_USES_LEGACY_ALSA_AUDIO := true
 TARGET_QCOM_AUDIO_VARIANT := caf
+BOARD_QCOM_TUNNEL_LPA_ENABLED := false
+BOARD_QCOM_VOIP_ENABLED := true
 
 # Bluetooth
-BOARD_BLUEDROID_VENDOR_CONF := device/htc/msm8660-common/bluetooth/vnd_msm8660.txt
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR ?= device/htc/msm8660-common/bluetooth/include
-BOARD_HAVE_BLUETOOTH_BCM := true
 BOARD_HAVE_BLUETOOTH := true
+BOARD_HAVE_BLUETOOTH_BCM := true
+BOARD_BLUEDROID_VENDOR_CONF := device/htc/msm8660-common/bluetooth/vnd_msm8660.txt
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/htc/msm8660-common/bluetooth/include
 
 # Camera
+BOARD_USES_QCOM_LEGACY_CAM_PARAMS := true
+BOARD_USES_PMEM_ADSP := true
+COMMON_GLOBAL_CFLAGS += -DICS_CAMERA_BLOB -DNO_UPDATE_PREVIEW
 BOARD_HAVE_HTC_FFC := true
 BOARD_NEEDS_MEMORYHEAPPMEM := true
-BOARD_USES_QCOM_LEGACY_CAM_PARAMS := true
-CAMERA_USES_SURFACEFLINGER_CLIENT_STUB := true
-COMMON_GLOBAL_CFLAGS += -DICS_CAMERA_BLOB -DNO_UPDATE_PREVIEW
 TARGET_DISABLE_ARM_PIE := true
-
 # Camera wrapper
 COMMON_GLOBAL_CFLAGS += -DDISABLE_HW_ID_MATCH_CHECK
+
+# Filesystem
+BOARD_VOLD_MAX_PARTITIONS := 36
 
 # GPS
 BOARD_USES_QCOM_GPS := true
 BOARD_VENDOR_QCOM_GPS_LOC_API_AMSS_VERSION := 50000
 
+# Sensors
+COMMON_GLOBAL_CFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS
+
 # Graphics
-BOARD_EGL_CFG := device/htc/msm8660-common/configs/egl.cfg
 COMMON_GLOBAL_CFLAGS += -DQCOM_NO_SECURE_PLAYBACK -DREFRESH_RATE=60 -DHTC_RGBA_8888_OFFSET
-TARGET_NO_HW_VSYNC := true
-TARGET_QCOM_DISPLAY_VARIANT := legacy
-TARGET_USES_C2D_COMPOSITION := true
+COMMON_GLOBAL_CFLAGS += -DGENLOCK_IOC_DREADLOCK -DUSE_GENLOCK
+COMMON_GLOBAL_CFLAGS += -DFORCE_SCREENSHOT_CPU_PATH
 USE_OPENGL_RENDERER := true
+TARGET_NO_HW_VSYNC := true
+TARGET_USES_ION := true
+TARGET_USES_C2D_COMPOSITION := true
+TARGET_USES_POST_PROCESSING := true
+BOARD_EGL_CFG := device/htc/msm8660-common/configs/egl.cfg
+NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
+
+# Bootanimation
+TARGET_BOOTANIMATION_PRELOAD := true
 
 # Lights
+# legacy LIBLIGHT naming
+TARGET_PROVIDES_LIBLIGHT := true
 TARGET_PROVIDES_LIBLIGHTS := true
+
+# Power
+TARGET_USES_CM_POWERHAL := true
 
 # Recovery
 TARGET_RECOVERY_FSTAB := device/htc/pyramid/ramdisk/fstab.pyramid
 RECOVERY_FSTAB_VERSION := 2
+USE_SET_METADATA := false
 
 # Webkit
 ENABLE_WEBGL := true
 TARGET_FORCE_CPU_UPLOAD := true
+
+# Hardware tunables
+BOARD_HARDWARE_CLASS := device/htc/msm8660-common/cmhw/
+
+# SELinux
+BOARD_SEPOLICY_DIRS += \
+    device/htc/msm8660-common/sepolicy
+
+BOARD_SEPOLICY_UNION += \
+    app.te \
+    bluetooth.te \
+    device.te \
+    domain.te \
+    drmserver.te \
+    file_contexts \
+    files \
+    file.te \
+    hci_init.te \
+    healthd.te \
+    init.te \
+    init_shell.te \
+    keystore.te \
+    kickstart.te \
+    mediaserver.te \
+    rild.te \
+    surfaceflinger.te \
+    system.te \
+    ueventd.te \
+    untrusted_app.te \
+    vold.te \
+    wpa.te \
+    wpa_socket.te
