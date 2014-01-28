@@ -20,6 +20,8 @@ PRODUCT_COPY_FILES += \
 # Permissions
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
+    frameworks/native/data/etc/android.hardware.camera.autofocus.xml:system/etc/permissions/android.hardware.camera.autofocus.xml \
+    frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
     frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
     frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
     frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
@@ -35,20 +37,14 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.sensor.compass.xml:system/etc/permissions/android.hardware.sensor.compass.xml \
     packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml
 
-# WiFi
-PRODUCT_COPY_FILES += \
-    device/htc/msm8660-common/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf
-
 # Audio
 PRODUCT_PACKAGES += \
     audio.a2dp.default \
     audio_policy.msm8660 \
     audio.primary.msm8660 \
-    audio_policy.conf \
-    libaudioutils \
-    libaudio-resampler \
     audio.usb.default \
-    Camera2
+    libaudio-resampler \
+    libaudioutils
 
 # GPS
 PRODUCT_COPY_FILES += \
@@ -79,17 +75,12 @@ PRODUCT_PACKAGES += \
     libstagefrighthw \
     libOmxQcelp13Enc \
     libOmxEvrcEnc \
-    libv8 \
     libOmxAmrEnc
 
+# Camera
 PRODUCT_PACKAGES += \
     camera.msm8660 \
-    libnetcmdiface \
     libsurfaceflinger_client
-
-# GooManager
-PRODUCT_PACKAGES += \
-    GooManager
 
 # Power
 PRODUCT_PACKAGES += \
@@ -103,6 +94,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     com.android.future.usb.accessory
 
+# Misc
+PRODUCT_PACKAGES += \
+    libnetcmdiface
+
 # Filesystem management tools
 PRODUCT_PACKAGES += \
     make_ext4fs \
@@ -113,6 +108,9 @@ PRODUCT_COPY_FILES += \
     device/htc/msm8660-common/configs/media_codecs.xml:system/etc/media_codecs.xml \
     device/htc/msm8660-common/configs/media_profiles.xml:system/etc/media_profiles.xml
 
+# audio policy
+PRODUCT_COPY_FILES += \
+    device/htc/msm8660-common/configs/audio_policy.conf:system/etc/audio_policy.conf
 
 # MSM8660 firmware
 PRODUCT_COPY_FILES += \
@@ -130,12 +128,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
     com.qc.hardware=true \
     debug.enabletr=true \
     debug.egl.hw=1 \
+    debug.mdpcomp.maxlayer=0 \
     debug.mdpcomp.logs=0 \
     debug.sf.hw=1 \
     dev.pm.dyn_samplingrate=1 \
     ro.opengles.version=131072 \
-    debug.hwc.dynThreshold=1.9 \
-    lpa.decode=false \
-    debug.sf.no_hw_vsync=1 \
-    ro.zygote.disable_gl_preload=true \
-    debug.hwui.render_dirty_regions=false
+    ro.bq.gpu_to_cpu_unsupported=1
+
+# call the proprietary setup
+$(call inherit-product-if-exists, vendor/htc/msm8660-common/msm8660-common-vendor.mk)
