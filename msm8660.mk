@@ -41,6 +41,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     audio.a2dp.default \
     audio_policy.msm8660 \
+    audio_policy.conf \
     audio.primary.msm8660 \
     audio.usb.default \
     libaudio-resampler \
@@ -55,6 +56,7 @@ PRODUCT_PACKAGES += \
     copybit.msm8660 \
     gralloc.msm8660 \
     hwcomposer.msm8660 \
+    memtrack.msm8660 \
     lights.msm8660 \
     libgenlock \
     libmemalloc \
@@ -64,18 +66,15 @@ PRODUCT_PACKAGES += \
 
 # OMX
 PRODUCT_PACKAGES += \
-    libc2dcolorconvert \
     libdivxdrmdecrypt \
+    libI420colorconvert \
     libmm-omxcore \
     libOmxCore \
     libOmxVdec \
     libOmxVenc \
     libOmxAacEnc \
     libOmxAmrEnc \
-    libstagefrighthw \
-    libOmxQcelp13Enc \
-    libOmxEvrcEnc \
-    libOmxAmrEnc
+    libstagefrighthw
 
 # Camera
 PRODUCT_PACKAGES += \
