@@ -98,6 +98,13 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libnetcmdiface
 
+# FM radio
+PRODUCT_PACKAGES += \
+    qcom.fmradio \
+    libqcomfm_jni \
+    FM2 \
+    FMRecord
+
 # Filesystem management tools
 PRODUCT_PACKAGES += \
     make_ext4fs \
@@ -111,13 +118,6 @@ PRODUCT_COPY_FILES += \
 # audio policy
 PRODUCT_COPY_FILES += \
     device/htc/msm8660-common/configs/audio_policy.conf:system/etc/audio_policy.conf
-
-# MSM8660 firmware
-PRODUCT_COPY_FILES += \
-    device/htc/msm8660-common/firmware/leia_pfp_470.fw:system/etc/firmware/leia_pfp_470.fw \
-    device/htc/msm8660-common/firmware/leia_pm4_470.fw:system/etc/firmware/leia_pm4_470.fw \
-    device/htc/msm8660-common/firmware/vidc_1080p.fw:system/etc/firmware/vidc_1080p.fw
-
 
 # Device uses high-density artwork where available
 PRODUCT_AAPT_CONFIG := normal hdpi

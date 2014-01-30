@@ -241,9 +241,9 @@
                    channels="1" />
         </EncoderProfile>
 
-        <ImageEncoding quality="90" />
-        <ImageEncoding quality="80" />
-        <ImageEncoding quality="70" />
+        <ImageEncoding quality="95" />
+        <ImageEncoding quality="85" />
+        <ImageEncoding quality="75" />
         <ImageDecoding memCap="20000000" />
 
         <camera previewFrameRate="30" />
@@ -314,9 +314,9 @@
                    channels="1" />
         </EncoderProfile>
 
-        <ImageEncoding quality="90" />
-        <ImageEncoding quality="80" />
-        <ImageEncoding quality="70" />
+        <ImageEncoding quality="95" />
+        <ImageEncoding quality="85" />
+        <ImageEncoding quality="75" />
         <ImageDecoding memCap="20000000" />
 
         <Camera previewFrameRate="0" />
