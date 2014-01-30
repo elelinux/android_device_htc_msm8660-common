@@ -41,7 +41,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     audio.a2dp.default \
     audio_policy.msm8660 \
-    audio_policy.conf \
     audio.primary.msm8660 \
     audio.usb.default \
     libaudio-resampler \
