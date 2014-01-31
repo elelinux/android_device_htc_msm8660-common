@@ -98,10 +98,10 @@ PRODUCT_PACKAGES += \
 
 # FM radio
 PRODUCT_PACKAGES += \
-    qcom.fmradio \
-    libqcomfm_jni \
-    FM2 \
-    FMRecord
+#    qcom.fmradio \
+#    libqcomfm_jni \
+#    FM2 \
+#    FMRecord
 
 # Filesystem management tools
 PRODUCT_PACKAGES += \
