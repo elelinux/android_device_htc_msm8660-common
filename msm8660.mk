@@ -107,10 +107,6 @@ PRODUCT_COPY_FILES += \
     device/htc/msm8660-common/configs/media_codecs.xml:system/etc/media_codecs.xml \
     device/htc/msm8660-common/configs/media_profiles.xml:system/etc/media_profiles.xml
 
-# Device uses high-density artwork where available
-PRODUCT_AAPT_CONFIG := normal hdpi
-PRODUCT_AAPT_PREF_CONFIG := hdpi
-
 # Common build properties
 PRODUCT_PROPERTY_OVERRIDES += \
     com.qc.hardware=true \
